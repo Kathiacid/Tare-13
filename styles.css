@@ -1,0 +1,145 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-color: #F4F1EA;
+    --primary-color: #1A3C34;
+    --accent-color: rgb(200, 159, 101,0.3);
+    --text-color: #2B2B2B;
+    --text-light: #EAEAEA;
+}
+
+
+header {
+    background-image: url(https://es.bimago.media/media/catalog/image/view/product/126805/role/image/size/1500x2240/type/ft-osmr-ng1-b/9019b918b1c3afbd97e8c2b6afb8988a.webp);
+    background-repeat: no-repeat;
+    background-size: cover; /* Asegura que cubra todo */
+    background-position: center;
+    height: 100vh;
+    transition: filter 0.6s ease-in-out;
+}
+
+
+body.no-scroll header {
+    filter: grayscale(100%);
+    color: #F4F1EA;
+}
+
+.no-scroll {
+    overflow: hidden; 
+}
+
+nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 50px;
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: rgba(255, 255, 255, 0.3);
+    position: fixed;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    transition: all 0.4s ease;
+    z-index: 1000;
+    top: 0;
+}
+
+nav.scrolled { 
+    background-color: var(--accent-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    padding: 10px 20px;
+    backdrop-filter: blur(10px);
+}
+
+.secciones {
+    display: flex;
+    gap: 50px;
+}
+
+.sections {
+    display: flex;
+    gap: 50px;
+    list-style: none;
+}
+
+.btn-list-open, .btn-list-close {
+    display: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 550px) {
+
+    nav {
+        position: fixed;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        transition: all 0.4s ease;
+        z-index: 1000;
+    }
+
+
+    nav.menu-open {
+        background-color: #000; 
+        color: white;
+        flex-direction: row-reverse; 
+        box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5); 
+    }
+    .btn-list-open {
+        display: block;
+    }
+    
+    .btn-list-close {
+        color: white;
+        width: 2rem;
+        display: none;
+    }
+
+    nav.menu-open #open { display: none; }
+    nav.menu-open #close { display: block; }
+    .secciones {
+        background-color: #000;
+        
+        position: absolute;
+        top: 100%; 
+        width: 200px;
+        right: 0;
+        margin-left: -50vw;
+        color: white;
+        text-align: center;
+        padding: 30px 20px;
+        display: flex;
+        flex-direction: column;
+        z-index: -1; 
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease;
+    }
+    
+    .secciones.visible {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .sections {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .secciones a {
+        font-size: 1.2rem;
+        text-decoration: none;
+        color: white;
+    }
+}
